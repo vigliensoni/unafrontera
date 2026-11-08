@@ -175,8 +175,18 @@ main > .bib-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 50px 72px
 @media (max-width: 900px) { .bib-grid { grid-template-columns: 1fr; gap: 30px; } }
 
 /* ---------- footer ---------- */
-#footer { background: var(--foot); color: #eee; font-size: 12px; }
-#footer .wrap { padding-top: 16px; padding-bottom: 16px; }
+.footer-nav { background: #000; color: #aaa; padding: 50px 0 40px; }
+.footer-cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 40px 50px; }
+.footer-col h3 {
+  margin: 0 0 14px; font-size: 14px; font-weight: 700; letter-spacing: 1px;
+  text-transform: uppercase; color: #777;
+}
+.footer-col ul { list-style: none; margin: 0; padding: 0; }
+.footer-col li { line-height: 27px; }
+.footer-col a { color: #aaa; font-size: 15px; }
+.footer-col a:hover, .footer-col a.current { color: #fff; }
+.footer-socket { background: var(--foot); color: #eee; font-size: 12px; }
+.footer-socket .wrap { padding-top: 24px; padding-bottom: 24px; }
 
 /* ---------- lightbox ---------- */
 dialog.lightbox {

@@ -1,1 +1,28 @@
-<footer id="footer"><div class="wrap">{{ site.Params.footer }}</div></footer>
+{{- /* Footer navigation, built from the same menu as the header (hugo.toml + page front matter).
+       Column 1: every top-level link without a submenu. Then one column per submenu. */ -}}
+{{- $page := . -}}
+<footer id="footer">
+  <div class="footer-nav">
+    <nav class="wrap footer-cols" aria-label="Footer">
+      <div class="footer-col">
+        <h3>Pages</h3>
+        <ul>
+          {{- range site.Menus.main }}{{ if not .HasChildren }}
+          <li><a href="{{ .URL }}"{{ if $page.IsMenuCurrent "main" . }} class="current" aria-current="page"{{ end }}{{ if .Params.external }} target="_blank" rel="noopener"{{ end }}>{{ .Name }}</a></li>
+          {{- end }}{{ end }}
+        </ul>
+      </div>
+      {{- range site.Menus.main }}{{ if .HasChildren }}
+      <div class="footer-col">
+        <h3>{{ .Name }}</h3>
+        <ul>
+          {{- range .Children }}
+          <li><a href="{{ .URL }}"{{ if $page.IsMenuCurrent "main" . }} class="current" aria-current="page"{{ end }}{{ if .Params.external }} target="_blank" rel="noopener"{{ end }}>{{ .Name }}</a></li>
+          {{- end }}
+        </ul>
+      </div>
+      {{- end }}{{ end }}
+    </nav>
+  </div>
+  <div class="footer-socket"><div class="wrap">{{ site.Params.footer }}</div></div>
+</footer>
