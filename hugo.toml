@@ -1,0 +1,80 @@
+baseURL = "/"
+title = "Una Frontera Líquida"
+languageCode = "en"
+relativeURLs = true          # links work from any sub-path or straight from disk
+disableKinds = ["taxonomy", "term", "RSS"]
+
+# Pretty root URLs for the locality pages: /petorca/, /el-manzano/, ...
+[permalinks.page]
+  localities = "/:contentbasename/"
+
+[params]
+  tagline = "A Liquid Frontier"
+  description = "Una Frontera Líquida – A Liquid Frontier."
+  footer = "© Una Frontera Líquida"
+
+# ---------------------------------------------------------------
+# Main navigation. Locality pages add themselves under "localities"
+# from their own front matter (menus.main.parent).
+# ---------------------------------------------------------------
+[[menus.main]]
+  identifier = "home"
+  name = "Home"
+  pageRef = "/"
+  weight = 10
+
+[[menus.main]]
+  identifier = "localities"
+  name = "Images/videos per locality"
+  url = "#"
+  weight = 20
+
+[[menus.main]]
+  identifier = "libretto"
+  name = "Libretto"
+  pageRef = "/libretto"
+  weight = 30
+
+[[menus.main]]
+  identifier = "audio"
+  name = "Audio"
+  pageRef = "/audio"
+  weight = 40
+
+[[menus.main]]
+  identifier = "ref"
+  name = "Ref. Installation"
+  url = "#"
+  weight = 50
+
+[[menus.main]]
+  identifier = "ref-opera"
+  name = "Paper opera"
+  parent = "ref"
+  url = "https://www.are.na/antonia-hernandez/opera-9l1tveohjwu"
+  weight = 1
+  [menus.main.params]
+    external = true
+
+[[menus.main]]
+  identifier = "ref-libretto"
+  name = "Libretto"
+  parent = "ref"
+  url = "https://www.are.na/antonia-hernandez/libretto"
+  weight = 2
+  [menus.main.params]
+    external = true
+
+[[menus.main]]
+  identifier = "drywater"
+  name = "Dry Water"
+  url = "https://againstcatastrophe.net/drywater"
+  weight = 60
+  [menus.main.params]
+    external = true
+
+[[menus.main]]
+  identifier = "bibliography"
+  name = "Bibliography"
+  pageRef = "/bibliography"
+  weight = 70

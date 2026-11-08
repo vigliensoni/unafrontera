@@ -1,0 +1,14 @@
+{{ define "main" }}
+<div class="wrap bib-grid">
+  {{- range .Params.sections }}
+  <section class="bib-section">
+    <h2>{{ .title }}</h2>
+    <div class="bib">
+      {{- range .entries }}
+      <div class="bib-entry">{{ . | markdownify }}</div>
+      {{- end }}
+    </div>
+  </section>
+  {{- end }}
+</div>
+{{ end }}

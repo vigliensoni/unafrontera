@@ -1,0 +1,7 @@
+<header id="header">
+  <div class="wrap">
+    <a class="logo" href="{{ "/" | relURL }}" aria-label="{{ site.Title }} – home"><img src="{{ "img/logo.svg" | relURL }}" alt="una frontera líquida"></a>
+    <button class="menu-toggle" aria-label="Menu" aria-expanded="false" aria-controls="nav"><span></span></button>
+    {{ partial "nav.html" . }}
+  </div>
+</header>

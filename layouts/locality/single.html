@@ -1,0 +1,8 @@
+{{ define "main" }}
+{{- with .Params.youtube }}
+<div class="wrap">
+  {{ partial "youtube.html" (dict "id" .id "title" (.title | default $.Title)) }}
+</div>
+{{- end }}
+{{ partial "gallery.html" . }}
+{{ end }}

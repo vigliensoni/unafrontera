@@ -1,0 +1,13 @@
+{{- /* Photo grid from the page's `photos` front matter (files live in the page bundle).
+       Grid shows a cropped 16:9 thumbnail; the link goes to the full image (used by the lightbox). */ -}}
+{{- $page := . -}}
+<section class="gallery" aria-label="{{ .Title }} photographs">
+  {{- range $i, $name := .Params.photos }}
+  {{- with $page.Resources.GetMatch $name }}
+  {{- $thumb := .Fill "700x394 q80 center" }}
+  <a href="{{ .RelPermalink }}"><img src="{{ $thumb.RelPermalink }}" width="{{ $thumb.Width }}" height="{{ $thumb.Height }}" alt="{{ $page.Title }} – photo {{ add $i 1 }}" loading="lazy" decoding="async"></a>
+  {{- else }}
+  {{- warnf "gallery: %q not found in %s" $name $page.File.Path }}
+  {{- end }}
+  {{- end }}
+</section>

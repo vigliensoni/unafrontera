@@ -1,0 +1,19 @@
+{{- /* Main menu from hugo.toml + page front matter. Highlights the current page (or its parent). */ -}}
+{{- $page := . -}}
+<nav id="nav" aria-label="Main">
+  <ul>
+    {{- range site.Menus.main }}
+    {{- $current := or ($page.IsMenuCurrent "main" .) ($page.HasMenuCurrent "main" .) }}
+    <li{{ if .HasChildren }} class="has-sub"{{ end }}>
+      <a href="{{ .URL }}"{{ if $current }} class="current"{{ end }}{{ if .HasChildren }} aria-haspopup="true"{{ end }}{{ if .Params.external }} target="_blank" rel="noopener"{{ end }}>{{ .Name }}</a>
+      {{- with .Children }}
+      <ul>
+        {{- range . }}
+        <li><a href="{{ .URL }}"{{ if $page.IsMenuCurrent "main" . }} class="current"{{ end }}{{ if .Params.external }} target="_blank" rel="noopener"{{ end }}>{{ .Name }}</a></li>
+        {{- end }}
+      </ul>
+      {{- end }}
+    </li>
+    {{- end }}
+  </ul>
+</nav>

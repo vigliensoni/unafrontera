@@ -1,0 +1,17 @@
+{{ define "main" }}
+{{- $page := . }}
+<div class="wrap">
+  <ol class="tracks">
+    {{- range .Params.tracks }}
+    <li>
+      <div class="track-title"><span class="n"></span>{{ .title }} <span class="meta">{{ .artist }}{{ with .duration }} · {{ . }}{{ end }}</span></div>
+      {{- with $page.Resources.GetMatch .file }}
+      <audio controls preload="none" src="{{ .RelPermalink }}"></audio>
+      {{- else }}
+      {{- warnf "audio: %q not found" .file }}
+      {{- end }}
+    </li>
+    {{- end }}
+  </ol>
+</div>
+{{ end }}
